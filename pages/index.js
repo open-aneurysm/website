@@ -1,82 +1,137 @@
+import React, { useState, useRef, useEffect } from 'react'
 import Head from 'next/head'
 
-export default function Home() {
+let backgroundSvg = `
+opacity: 0.25;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+`
+
+function Dropdown({ title, content }) {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
-
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            pages/index.js
-          </code>
+    <div className="border collapse w-full max-w-[700px] mx-auto rounded-box border-base-300 collapse-arrow">
+      <input type="checkbox" />
+      <div className="text-xl font-medium collapse-title">
+        {title}
+      </div>
+      <div className="collapse-content">
+        <p>
+          {content}
         </p>
+      </div>
+    </div>
+  )
+}
 
-        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and API.
-            </p>
-          </a>
+export default function Home() {
+  const bgRef = useRef();
+  const bgRefParent = useRef();
 
-          <a
-            href="https://nextjs.org/learn"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
+  useEffect(() => {
+    const bg = bgRef.current;
+    const bgParent = bgRefParent.current;
+    bg.style.cssText += backgroundSvg;
+    bgParent.style.cssText += "-webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1.0) 50%, transparent 100%)"
+  }, [])
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
+  return (
+    <div className="min-h-screen bg-gray-800">
+      <Head>
+        <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet"></link>
+      </Head>
+      <div className="h-[450px] bg-gradient-to-b from-pink-900 to-gray-800 absolute top-0 left-0 w-full"></div>
+      <div className="h-[450px] bg-gradient-to-b from-pink-900 to-gray-800 absolute top-0 left-0 w-full" ref={bgRefParent}>
+        <div ref={bgRef} className="absolute top-0 left-0 w-full h-full"></div>
+      </div>
+      <div className="fixed z-20 top-0 left-0 h-[56px] bg-pink-900 bg-opacity-10 w-full backdrop-filter backdrop-blur shadow-md">
+        <div className="mx-auto w-full max-w-[1210px] text-gray-200 flex justify-between items-center h-full">
+          <div className="flex items-center h-full px-3">
+            <img src="https://avatars.githubusercontent.com/u/85714537?s=36&v=4" className="mr-3 rounded-lg" />
+            <div className="flex flex-col leading-none">
+              <h1 className="text-xl font-bold leading-none">Open Aneurysm</h1>
+              <p className="text-xs">Public, open-source aneurysm research</p>
+            </div>
+          </div>
+          <div>
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          </div>
         </div>
-      </main>
-
-      <footer className="flex items-center justify-center w-full h-24 border-t">
-        <a
-          className="flex items-center justify-center"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
-        </a>
-      </footer>
+      </div>
+      <div className="mt-[56px] relative flex flex-col items-center justify-center pt-16 pb-20 z-10">
+        <img src="https://avatars.githubusercontent.com/u/85714537?s=64&v=4" className="rounded-lg shadow-xl" />
+        <div className="flex flex-col items-center pt-10">
+          <h1 className="px-4 pb-8 text-5xl font-bold leading-none text-center text-white md:pb-3 md:leading-normal">Open Aneurysm</h1>
+          <span className="space-x-2">
+            <h2 className="inline-block text-center text-white bg-white rounded-full bg-opacity-10 px-3 py-0.5">
+              <div className="h-[8px] w-[8px] bg-green-500 rounded-full inline-block my-0.5 mr-2"></div>EOIs Open
+            </h2>
+            <h2 className="inline-block text-center text-white bg-white rounded-full bg-opacity-10 px-3 py-0.5">
+              <div className="h-[8px] w-[8px] bg-green-500 rounded-full inline-block my-0.5 mr-2"></div>Alpha
+            </h2>
+          </span>
+        </div>
+        <div className="pt-16">
+          <button className="btn btn-wide btn-primary btn-lg">Submit an EOI</button>
+        </div>
+        <div className="py-20 w-full max-w-[1000px] text-gray-200">
+          <div className="grid grid-cols-1 md:grid-cols-3">
+            <div className="flex flex-col items-center pb-8 text-center md:pb-0">
+              <img src="/data.png" className="mb-3 filter invert" />
+              <h2 className="pb-2 text-xl font-bold">Ethics & Collection</h2>
+              <p className="px-6">We're collecting a fully public, open-source, & anonymised database of unruptured aneurysms.</p>
+              <div className="mt-4 inline-block text-center text-white bg-white rounded-full bg-opacity-10 px-3 py-0.5">
+                <div className="h-[8px] w-[8px] bg-green-500 rounded-full inline-block my-0.5 mr-2"></div>EOIs Open
+              </div>
+            </div>
+            <div className="flex flex-col items-center pb-8 text-center opacity-50 md:pb-0">
+              <img src="/annotate.png" className="mb-3 filter invert" />
+              <h2 className="pb-2 text-xl font-bold">Annotation & Visualisation</h2>
+              <p className="px-6">We're developing an open-source editor to annotate and visualize data in a high-performance voxel environment</p>
+              <div className="mt-4 inline-block text-center text-white bg-white rounded-full bg-opacity-10 px-3 py-0.5">
+                IN PROGRESS
+              </div>
+            </div>
+            <div className="flex flex-col items-center text-center opacity-50">
+              <img src="/analysis.png" className="mb-3 filter invert" />
+              <h2 className="pb-2 text-xl font-bold">Analysis & Segmentation</h2>
+              <p className="px-6">We're working on detection algorithms to quickly identify and segment aneurysms</p>
+              <div className="mt-4 inline-block text-center text-white bg-white rounded-full bg-opacity-10 px-3 py-0.5">
+                COMING SOON
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="py-20 w-full max-w-[1000px] text-gray-200">
+          <h1 className="text-3xl font-bold text-center">About the project</h1>
+          <div className="px-3 pt-10 space-y-2">
+            <Dropdown title="What is the project's mission?" content="[[[ Content will go here ]]]" />
+            <Dropdown title="How are submitted images licensed and credited?" content="[[[ Content will go here ]]]" />
+            <Dropdown title="How is patient anonymity ensured?" content="[[[ Content will go here ]]]" />
+            <Dropdown title="Why should I get involved?" content="[[[ Content will go here ]]]" />
+            <Dropdown title="Who is running this?" content="[[[ Content will go here ]]]" />
+          </div>
+        </div>
+        <div className="py-20 w-full max-w-[1000px] text-gray-200">
+          <h1 className="text-3xl font-bold text-center">Our Repositories</h1>
+          <div className="px-3 pt-10 space-y-2">
+            <Dropdown title="What is the project's mission?" content="[[[ Content will go here ]]]" />
+            <Dropdown title="How are submitted images licensed and credited?" content="[[[ Content will go here ]]]" />
+            <Dropdown title="How is patient anonymity ensured?" content="[[[ Content will go here ]]]" />
+            <Dropdown title="Why should I get involved?" content="[[[ Content will go here ]]]" />
+            <Dropdown title="Who is running this?" content="[[[ Content will go here ]]]" />
+          </div>
+        </div>
+      </div>
+      <div className="relative mt-[-400px] h-[450px] flex flex-col justify-end">
+        <div className="absolute h-[450px] w-full">
+          <div className="h-[450px] bg-gradient-to-b from-gray-900 to-gray-800 absolute top-0 left-0 w-full transform rotate-180" ref={bgRefParent}>
+            <div ref={bgRef} className="absolute top-0 left-0 w-full h-full"></div>
+          </div>
+        </div>
+        <div className="relative py-6 text-center text-gray-500">
+          &copy; {new Date().getFullYear()} Mitchell Johnson
+        </div>
+      </div>
     </div>
   )
 }
