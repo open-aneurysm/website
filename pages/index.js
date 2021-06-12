@@ -24,13 +24,20 @@ function Dropdown({ title, content }) {
 
 export default function Home() {
   const bgRef = useRef();
+  const bgRef_2 = useRef();
   const bgRefParent = useRef();
+  const bgRefParent_2 = useRef();
 
   useEffect(() => {
+    // Add SVG effects
     const bg = bgRef.current;
     const bgParent = bgRefParent.current;
     bg.style.cssText += backgroundSvg;
     bgParent.style.cssText += "-webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1.0) 50%, transparent 100%)"
+    const bg2 = bgRef_2.current;
+    const bgParent2 = bgRefParent_2.current;
+    bg2.style.cssText += backgroundSvg;
+    bgParent2.style.cssText += "-webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1.0) 50%, transparent 100%)"
   }, [])
 
   return (
@@ -70,8 +77,14 @@ export default function Home() {
             </h2>
           </span>
         </div>
-        <div className="pt-16">
+        <div className="flex flex-row items-start pt-16 space-x-2">
           <button className="btn btn-wide btn-primary btn-lg">Submit an EOI</button>
+          <button className="bg-gray-900 btn btn-wide btn-disabled btn-lg">
+            <div className="flex flex-col">
+              <div className="leading-none">Browse the Dataset</div>
+              <div className="text-xs text-gray-500">Coming Soon</div>
+            </div>
+          </button>
         </div>
         <div className="py-20 w-full max-w-[1000px] text-gray-200">
           <div className="grid grid-cols-1 md:grid-cols-3">
@@ -123,9 +136,9 @@ export default function Home() {
         </div>
       </div>
       <div className="relative mt-[-400px] h-[450px] flex flex-col justify-end">
-        <div className="absolute h-[450px] w-full">
-          <div className="h-[450px] bg-gradient-to-b from-gray-900 to-gray-800 absolute top-0 left-0 w-full transform rotate-180" ref={bgRefParent}>
-            <div ref={bgRef} className="absolute top-0 left-0 w-full h-full"></div>
+        <div className="absolute h-[450px] w-full" style={{ opacity: 0.25 }}>
+          <div className="h-[450px] bg-gradient-to-b from-gray-900 to-gray-800 absolute top-0 left-0 w-full transform rotate-180" ref={bgRefParent_2}>
+            <div ref={bgRef_2} className="absolute top-0 left-0 w-full h-full"></div>
           </div>
         </div>
         <div className="relative py-6 text-center text-gray-500">
