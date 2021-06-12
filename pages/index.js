@@ -59,8 +59,9 @@ export default function Home() {
               <p className="text-xs">Public, open-source aneurysm research</p>
             </div>
           </div>
-          <div>
-
+          <div className="flex items-center h-full px-3 space-x-6">
+            <a href="http://github.com/open-aneurysm/website/discussions" target="_blank" rel="noopener" className="text-gray-200 hover:text-white">Community</a>
+            <a href="http://github.com/open-aneurysm/" target="_blank" rel="noopener"><img src="./github.svg" className="w-8 h-8 filter invert" /></a>
           </div>
         </div>
       </div>
@@ -77,11 +78,11 @@ export default function Home() {
             </h2>
           </span>
         </div>
-        <div className="flex flex-row items-start pt-16 space-x-2">
+        <div className="flex flex-col items-start pt-16 space-y-4 md:space-y-0 md:space-x-2 md:flex-row">
           <button className="btn btn-wide btn-primary btn-lg">Submit an EOI</button>
           <button className="bg-gray-900 btn btn-wide btn-disabled btn-lg">
             <div className="flex flex-col">
-              <div className="leading-none">Browse the Dataset</div>
+              <div className="leading-none text-gray-400">Browse the Dataset</div>
               <div className="text-xs text-gray-500">Coming Soon</div>
             </div>
           </button>
@@ -91,7 +92,7 @@ export default function Home() {
             <div className="flex flex-col items-center pb-8 text-center md:pb-0">
               <img src="/data.png" className="mb-3 filter invert" />
               <h2 className="pb-2 text-xl font-bold">Ethics & Collection</h2>
-              <p className="px-6">We're collecting a fully public, open-source, & anonymised database of unruptured aneurysms.</p>
+              <p className="px-6">We're building a fully public, open-source, & anonymised database of unruptured aneurysms.</p>
               <div className="mt-4 inline-block text-center text-white bg-white rounded-full bg-opacity-10 px-3 py-0.5">
                 <div className="h-[8px] w-[8px] bg-green-500 rounded-full inline-block my-0.5 mr-2"></div>EOIs Open
               </div>
@@ -122,6 +123,16 @@ export default function Home() {
             <Dropdown title="How is patient anonymity ensured?" content="[[[ Content will go here ]]]" />
             <Dropdown title="Why should I get involved?" content="[[[ Content will go here ]]]" />
             <Dropdown title="Who is running this?" content="[[[ Content will go here ]]]" />
+          </div>
+        </div>
+        <div className="py-20 w-full max-w-[1000px] text-gray-200 px-4">
+          <div className="bg-gradient-to-br from-indigo-700 to-blue-900 transform -skew-y-2 rounded-2xl shadow-lg h-[330px] w-full px-8 py-6">
+            <div className="mt-6 transform skew-y-2">
+              <h1 className="text-4xl font-bold text-blue-100 max-w-[440px]">Test Our DICOM Anonymisation Tooling</h1>
+              <h2 className="text-lg max-w-[360px] leading-tight pt-3">Works 100% offline, in your browser. It even automatically strips soft-tissue away to prevent facial reconstruction.</h2>
+              <button className="mt-4 btn btn-wide btn-info">Try it out</button>
+              <p className="pt-2 text-sm text-blue-400">100% open source, on GitHub</p>
+            </div>
           </div>
         </div>
         <div className="py-20 w-full max-w-[1000px] text-gray-200">
