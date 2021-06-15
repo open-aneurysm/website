@@ -79,7 +79,7 @@ export default function Home() {
           </span>
         </div>
         <div className="flex flex-col items-start pt-16 space-y-4 md:space-y-0 md:space-x-2 md:flex-row">
-          <button className="btn btn-wide btn-primary btn-lg">Submit an EOI</button>
+          <a className="btn btn-wide btn-primary btn-lg" href="https://forms.gle/CwqYEMkvGVU34Z8CA" target="_blank" rel="noopener norefferer">Submit an EOI</a>
           <button className="bg-gray-900 btn btn-wide btn-disabled btn-lg">
             <div className="flex flex-col">
               <div className="leading-none text-gray-400">Browse the Dataset</div>
@@ -138,11 +138,14 @@ export default function Home() {
         <div className="py-20 w-full max-w-[1000px] text-gray-200">
           <h1 className="text-3xl font-bold text-center">Our Repositories</h1>
           <div className="px-3 pt-10 space-y-2">
-            <Dropdown title="What is the project's mission?" content="[[[ Content will go here ]]]" />
-            <Dropdown title="How are submitted images licensed and credited?" content="[[[ Content will go here ]]]" />
-            <Dropdown title="How is patient anonymity ensured?" content="[[[ Content will go here ]]]" />
-            <Dropdown title="Why should I get involved?" content="[[[ Content will go here ]]]" />
-            <Dropdown title="Who is running this?" content="[[[ Content will go here ]]]" />
+            <a href="https://github.com/open-aneurysm/website" rel="noopener" target="_blank"
+              className="flex items-center px-6 py-4 border border-gray-700 hover:border-gray-500 transition rounded-xl w-full max-w-[720px] mx-auto space-x-4">
+              <div className="flex-none"><img src="./github.svg" className="w-12 h-12 filter invert" /></div>
+              <div className="flex-1 text-gray-300 hover:text-gray-200">
+                <h1 className="text-2xl font-bold leading-tight">open-aneurysm/website</h1>
+                <p>The source code to the website that you're looking at right now.</p>
+              </div>
+            </a>
           </div>
         </div>
       </div>
