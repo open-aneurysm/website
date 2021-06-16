@@ -43,6 +43,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-800">
       <Head>
+        <title>Open Aneurysm</title>
         <link rel="preconnect" href="https://fonts.gstatic.com"></link>
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet"></link>
       </Head>
@@ -156,7 +157,7 @@ export default function Home() {
             </a>
           </div>
         </div>
-        {/*<div className="py-20 w-full max-w-[1000px] text-gray-200">
+        {/* <div className="py-20 w-full max-w-[1000px] text-gray-200">
           <h1 className="text-xl font-bold text-center">Maintained By</h1>
           <div className="px-3 pt-10 space-y-2">
             <a href="https://github.com/open-aneurysm/website" rel="noopener" target="_blank"
@@ -168,7 +169,7 @@ export default function Home() {
               </div>
             </a>
           </div>
-        </div>*/}
+        </div> */}
       </div>
       <div className="relative mt-[-400px] h-[450px] flex flex-col justify-end">
         <div className="absolute h-[450px] w-full" style={{ opacity: 0.25 }}>
