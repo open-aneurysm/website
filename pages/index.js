@@ -125,13 +125,21 @@ export default function Home() {
             <Dropdown title="Who is running this?" content="[[[ Content will go here ]]]" />
           </div>
         </div>
-        <div className="py-20 w-full max-w-[1000px] text-gray-200 px-4">
+        <div className="py-20 w-full max-w-[1000px] text-gray-200 px-4 space-y-8">
           <div className="bg-gradient-to-br from-indigo-700 to-blue-900 transform -skew-y-2 rounded-2xl shadow-lg h-[330px] w-full px-8 py-6">
             <div className="mt-6 transform skew-y-2">
               <h1 className="text-4xl font-bold text-blue-100 max-w-[440px]">Test Our DICOM Anonymisation Tooling</h1>
               <h2 className="text-lg max-w-[360px] leading-tight pt-3">Works 100% offline, in your browser. It even automatically strips soft-tissue away to prevent facial reconstruction.</h2>
               <button className="mt-4 btn btn-wide btn-info">Try it out</button>
               <p className="pt-2 text-sm text-blue-400">100% open source, on GitHub</p>
+            </div>
+          </div>
+          <div className="bg-gradient-to-br from-yellow-700 to-pink-900 transform -skew-y-2 rounded-2xl shadow-lg h-[330px] w-full px-8 py-6">
+            <div className="mt-6 transform skew-y-2">
+              <h1 className="text-4xl font-bold text-pink-100 max-w-[440px]">Use Our Voxel Editor To Annotate 3D Images</h1>
+              <h2 className="text-lg max-w-[360px] leading-tight pt-3">Designed for rapid annotation and spacial exploration of three dimensional voxel data, our voxel editor makes annotation easy.</h2>
+              <button className="mt-4 btn btn-wide btn-warning">Github Releases</button>
+              <p className="pt-2 text-sm text-yellow-400">100% open source, on GitHub</p>
             </div>
           </div>
         </div>
@@ -148,6 +156,19 @@ export default function Home() {
             </a>
           </div>
         </div>
+        {/*<div className="py-20 w-full max-w-[1000px] text-gray-200">
+          <h1 className="text-xl font-bold text-center">Maintained By</h1>
+          <div className="px-3 pt-10 space-y-2">
+            <a href="https://github.com/open-aneurysm/website" rel="noopener" target="_blank"
+              className="flex items-center px-6 py-4 transition rounded-xl w-full max-w-[420px] mx-auto space-x-4">
+              <div className="flex-none"><img src="https://avatars.githubusercontent.com/u/15032956?v=4" className="w-12 h-12 rounded-full" /></div>
+              <div className="flex-1 text-gray-300 hover:text-gray-200">
+                <h1 className="text-2xl font-bold leading-tight">Mitchell Johnson</h1>
+                <p>23, Masters Student @ QUT. I build things.</p>
+              </div>
+            </a>
+          </div>
+        </div>*/}
       </div>
       <div className="relative mt-[-400px] h-[450px] flex flex-col justify-end">
         <div className="absolute h-[450px] w-full" style={{ opacity: 0.25 }}>
